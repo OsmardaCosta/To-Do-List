@@ -7,6 +7,8 @@ import ButtonAdd from './Components/ButtonAdd'
 import ButtonClose from './Components/ButtonClose'
 import Tasks from './Components/Tasks'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -15,9 +17,23 @@ function App() {
   const inputref = useRef()
   const inputref2 = useRef()
 
-  const openmodal = () =>{
+  const NotifyTaskSucess = () => {
+    toast.success('Nova tarefa adicionada', {
+      autoClose: 2000,
+    })
+  }
+
+  const NotifyTitle = () => {
+    toast.warning('A sua Tarefa deve ter um título')
+  }
+
+  const NotifyContent = () => {
+    toast.warning('A sua tarefa não tem um conteúdo')
+  }
+
+  const openmodal = () => {
     SetModalOpen(true)
-    
+
   }
 
   const closemodal = () => {
@@ -27,19 +43,27 @@ function App() {
   }
 
   const handlechangeInput = () => {
-    {
-      inputref.current.value !== '' &&
-        SetTasks([...tasks, {
-          id: v4(),
-          Title: inputref.current.value,
-          content: inputref2.current.value,
-          completed: false
-        }])
-      inputref.current.value = ''
-    inputref2.current.value = ''
+    if (inputref2.current.value == '') {
+      NotifyContent()
+      return
     }
-    SetModalOpen(false)
-  };
+
+    if (inputref.current.value !== '') {
+      SetTasks([...tasks, {
+        id: v4(),
+        Title: inputref.current.value,
+        content: inputref2.current.value,
+        completed: false
+      }])
+      SetModalOpen(false)
+      inputref.current.value = ''
+      inputref2.current.value = ''
+      NotifyTaskSucess()
+    } else {
+      NotifyTitle()
+      return
+    };
+  }
 
   const handleTaskClick = (taskId) => {
     const newtask = tasks.map(task => {
@@ -59,15 +83,15 @@ function App() {
 
   return (
     <>
-      <div className='Header' onClick={openmodal}>< FaPlus className='check plus'/>
-        Adicione uma tarefa
+      <div className='Header' onClick={openmodal}>
+       <nav>< FaPlus className='check plus' /> Adicione uma tarefa</nav>
       </div>
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
           <div className='add-task-container'>
             <Input Ref={inputref} />
             <Content reftextarea={inputref2} />
-            <ButtonClose onclick={closemodal}/>
+            <ButtonClose onclick={closemodal} />
             <ButtonAdd onclick={handlechangeInput} />
           </div>
         </div>
@@ -75,8 +99,18 @@ function App() {
           <Tasks Tasks={tasks} RemoveTask={RemoveTask} handleTaskClick={handleTaskClick} />
         </div>
       </div>
-
-
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   )
 }

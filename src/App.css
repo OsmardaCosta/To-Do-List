@@ -1,0 +1,253 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100vh;
+}
+
+.Header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.task-container{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.title{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    color: #000000;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+    user-select: none;
+}
+
+input::placeholder{
+    font-weight: bold;
+}
+
+.button-add,.ButtonClose{
+    padding: 10px 16px;
+    background-color: chartreuse;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transition: .2s;
+
+    &:hover{
+        background-color: rgb(111, 221, 0);
+    }
+}
+
+.ButtonClose{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid red;
+    bottom: 8px;
+    right: 115px;
+
+    &:hover{
+        background-color: rgb(221, 0, 0);
+        color: #fff;
+    }
+}
+
+.task{
+    width: 250px;
+    height: 250px;
+    padding: 0 8px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    user-select: none;
+    animation: animationTask .4s ease;
+    transition: .3s;
+    color: #000000;
+    box-shadow: 0px 0px 8px 1px rgba(104, 104, 104, 0.26);
+    position: relative;
+    overflow: hidden;
+    margin: 8px;
+    overflow-wrap: break-word;
+}
+
+.icons{
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+}
+
+.task h2{
+    text-align: center;
+    padding-bottom: 4px;
+}
+
+.delete,.check{
+    color: chartreuse;
+    vertical-align: middle;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.delete{
+    margin-left: 6px;
+}
+
+@keyframes animationTask {
+    0%{
+        opacity: 0;
+        transform: translateX(-30px);
+    }   
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+.add-task-overlay{
+    position: absolute; 
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left:0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.418);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+.modalclose{
+    display: none;
+}
+
+.add-task-container{
+    position: relative;
+    background-color: #fff;
+    height: auto;
+    width: 40%;
+    height: 60%;
+    border-radius: 10px;
+
+    max-width: 900px;
+}
+
+.title-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid chartreuse;
+}
+
+.content{
+    width: 100%;
+    height: 300px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+    padding: 10px;
+    font-size: 16px;
+}
+
+@media screen and (min-width: 325px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+
+    .task-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 520px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+
+    .task-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 768px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+
+    .task-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 820px){
+    body{
+        display: flex;
+        justify-content: center;
+    }
+
+    .task-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+
+    .task-container{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .add-task-container{
+        width: 90%; 
+    }
+
+    .task-container{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 1400px){
+    .add-task-container{
+       width: 45%;
+    }
+}
+
+@media screen and (max-width: 850px){
+    .add-task-container{
+        width: 60%;
+    }
+}
+
+.plus{
+    margin-right: 5px;
+}

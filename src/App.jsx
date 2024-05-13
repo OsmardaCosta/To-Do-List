@@ -86,7 +86,7 @@ function App() {
       <div className='Header' onClick={openmodal}>
        <nav>< FaPlus className='check plus' /> Adicione uma tarefa</nav>
       </div>
-      <div style={{ display: 'flex' }}>
+      <div>
         <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
           <div className='add-task-container'>
             <Input Ref={inputref} />
@@ -96,7 +96,7 @@ function App() {
           </div>
         </div>
         <div>
-          <Tasks Tasks={tasks} RemoveTask={RemoveTask} handleTaskClick={handleTaskClick} />
+          <Tasks Tasks={tasks} RemoveTask={RemoveTask} handleTaskClick={handleTaskClick}/>
         </div>
       </div>
       <ToastContainer

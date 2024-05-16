@@ -55,10 +55,12 @@ function App() {
         content: inputref2.current.value,
         completed: false
       }])
+
       SetModalOpen(false)
       inputref.current.value = ''
       inputref2.current.value = ''
       NotifyTaskSucess()
+      
     } else {
       NotifyTitle()
       return
@@ -83,34 +85,35 @@ function App() {
 
   return (
     <>
-      <div className='Header' onClick={openmodal}>
-       <nav>< FaPlus className='check plus' /> Adicione uma tarefa</nav>
-      </div>
-      <div>
-        <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
-          <div className='add-task-container'>
-            <Input Ref={inputref} />
-            <Content reftextarea={inputref2} />
-            <ButtonClose onclick={closemodal} />
-            <ButtonAdd onclick={handlechangeInput} />
-          </div>
+        <div className='Header' onClick={openmodal}>
+         <nav>< FaPlus className='check plus' /> Adicione uma tarefa</nav>
         </div>
         <div>
-          <Tasks Tasks={tasks} RemoveTask={RemoveTask} handleTaskClick={handleTaskClick}/>
+          <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
+            <div className='add-task-container'>
+              <Input Ref={inputref} />
+              <Content reftextarea={inputref2} />
+              <ButtonClose onclick={closemodal} />
+              <ButtonAdd onclick={handlechangeInput} />
+            </div>
+          </div>
+          <div>
+            <Tasks Tasks={tasks} RemoveTask={RemoveTask} handleTaskClick={handleTaskClick}/>
+          </div>
         </div>
-      </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      
     </>
   )
 }

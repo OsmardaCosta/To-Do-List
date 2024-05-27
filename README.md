@@ -4,7 +4,11 @@ Desenvolvi essa aplicação para gerenciar uma Lista de Tarefas. Nesta plataform
 
 # Tecnologias Utilizadas 
 
-HTML
-CSS
-JAVASCRIPT 
+HTML/
+CSS/
+JAVASCRIPT/
 REACT
+
+#Deploy
+
+https://to-do-list-nu-neon-42.vercel.app/

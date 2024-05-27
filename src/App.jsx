@@ -16,11 +16,20 @@ function App() {
 
   const [tasks, SetTasks] = useState(LocalTasks ? JSON.parse(LocalTasks) : [])
   const [ModalOpen, SetModalOpen] = useState(false)
+  const [taskLength, settasklength] = useState('')
+  const [taskComplet, setTaskcomplet] = useState('')
   const inputref = useRef()
   const inputref2 = useRef()
 
+  const setTaskCompleted = ()=>{
+    const setTasks = tasks.filter(task => task.completed).length
+    setTaskcomplet(setTasks)
+  }
+
   useEffect(() => {
     localStorage.setItem('task', JSON.stringify(tasks))
+    settasklength(tasks.length)
+    setTaskCompleted()
   }, [tasks])
 
   const NotifyTaskSucess = () => {
@@ -93,8 +102,8 @@ function App() {
         <nav>< FaPlus className='check plus'/>{tasks.length > 0 ? 'Adicione mais uma tarefa' : 'Adicione uma tarefa'}</nav>
       </div>
       <div className='tasklengthContainer'>
-        <div style={!tasks.length ? {margin: 'auto', marginTop: '10px'} : {}} className='taskLength'>Tarefas Criadas: {tasks.length}</div>
-        <div style={!tasks.length ? {display: 'none'} : {}} className='taskLength'>Tarefas Concluidas: {tasks.filter(task => task.completed).length} de {tasks.length}</div>
+        <div style={!tasks.length ? {margin: 'auto', marginTop: '10px'} : {}} className='taskLength'>Tarefas Criadas: {taskLength}</div>
+        <div style={!tasks.length ? {display: 'none'} : {}} className='taskLength'>Tarefas Concluidas: {taskComplet} de {taskLength}</div>
       </div>
       <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
         <div className='add-task-container'>

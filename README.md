@@ -1,10 +1,10 @@
-# React + Vite
+# Sobre o Projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Desenvolvi essa aplicação para gerenciar uma Lista de Tarefas. Nesta plataforma, os usuários podem adicionar novas tarefas, marcá-las como concluídas e excluí-las conforme necessário. O objetivo é oferecer uma ferramenta eficiente e intuitiva para ajudar na organização e gestão de tarefas diárias, promovendo produtividade e eficiência. Durante o desenvolvimento deste projeto, reforcei meus conhecimentos com, React e responsividade.
 
-Currently, two official plugins are available:
+# Tecnologias Utilizadas 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-# Osmar
+HTML
+CSS
+JAVASCRIPT 
+REACT

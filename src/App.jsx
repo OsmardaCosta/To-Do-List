@@ -6,6 +6,7 @@ import Content from './Components/Content'
 import ButtonAdd from './Components/ButtonAdd'
 import ButtonClose from './Components/ButtonClose'
 import Tasks from './Components/Tasks'
+import ButtonReset from './Components/ButtonReset'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,6 +45,13 @@ function App() {
 
   const NotifyContent = () => {
     toast.warning('A sua tarefa não tem um conteúdo')
+  }
+
+  const NotifyReset = () => {
+    toast.success('Eliminou todas as tarefas', {
+      autoClose: 1600,
+      position: 'top-center'
+    })
   }
 
   const openmodal = () => {
@@ -96,15 +104,23 @@ function App() {
     SetTasks(tasks.filter(task => task.id !== id))
   }
 
+  const resetTasks = ()=>{
+    SetTasks([])
+    NotifyReset()
+  }
+
   return (
     <>
       <div className='Header' onClick={openmodal}>
         <nav>< FaPlus className='check plus'/>{tasks.length > 0 ? 'Adicione mais uma tarefa' : 'Adicione uma tarefa'}</nav>
       </div>
+
       <div className='tasklengthContainer'>
         <div style={!tasks.length ? {margin: 'auto', marginTop: '10px'} : {}} className='taskLength'>Tarefas Criadas: {taskLength}</div>
         <div style={!tasks.length ? {display: 'none'} : {}} className='taskLength'>Tarefas Concluidas: {taskComplet} de {taskLength}</div>
+        <div style={tasks.length > 1 ? {display: 'block'} : {display: 'none'} }><ButtonReset onclick={resetTasks}/></div>
       </div>
+
       <div className={ModalOpen ? 'add-task-overlay' : 'modalclose'}>
         <div className='add-task-container'>
           <Input Ref={inputref} />

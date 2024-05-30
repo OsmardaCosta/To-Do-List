@@ -39,13 +39,22 @@ body {
     user-select: none;
 }
 
-.taskLength {
+.taskLength, .ButtonReset {
     margin-top: 5px;
     background-color: #fff;
     padding: 4px;
     font-weight: bold;
     border-radius: 4px;
     box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.226);
+}
+
+.ButtonReset{
+    background-color: red;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    user-select: none;
+    cursor: pointer;
 }
 
 .tasklengthStyle{

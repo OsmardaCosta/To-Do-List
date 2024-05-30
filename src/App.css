@@ -314,6 +314,10 @@ body {
         display: flex;
         justify-content: center;
     }
+
+    .tasklengthContainer div{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 540px) {
